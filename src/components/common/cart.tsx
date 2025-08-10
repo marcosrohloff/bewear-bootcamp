@@ -1,8 +1,10 @@
 "use client";
 
+import { useQuery } from "@tanstack/react-query";
 import { ShoppingBasketIcon } from "lucide-react";
 import Image from "next/image";
 
+import { getCart } from "@/actions/get-cart";
 import { Button } from "@/components/ui/button";
 import { formatCentsToBRL } from "@/helpers/money";
 
@@ -14,6 +16,11 @@ import {
   SheetTrigger,
 } from "../ui/sheet";
 
+export const Cart = () => {
+  const { data: cart, isPending: cartIsLoading } = useQuery({
+    queryKey: ["cart"],
+    queryFn: () => getCart(),
+  });
   return (
     <Sheet>
       <SheetTrigger asChild>
