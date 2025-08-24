@@ -20,7 +20,6 @@ const Home = async () => {
       variants: true,
     },
   });
-
   const categories = await db.query.categoryTable.findMany({});
 
   return (
